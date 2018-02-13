@@ -38,11 +38,6 @@ gameCanvas.addEventListener("click", function (event) {
         selectCard(event);
     } 
 });
-document.querySelector("#testWin").addEventListener("click", function () {
-    gameContainer.className = content.gameHidden;
-    victoryModal.className = content.modalShown;
-    console.log("Game was hidden. Modal was shown.");
-});
 document.querySelector("#restart").addEventListener("click", function () {
     resetGame();
     gameContainer.className = content.gameShown;
