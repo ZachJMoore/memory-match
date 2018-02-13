@@ -1,18 +1,21 @@
-.content-visible{
+/*Javascript dynamically assigned css styles*/
+
+.content-visible {
     visibility: visible;
 }
-.content-hidden{
+
+.content-hidden {
     visibility: hidden;
 }
-.card-flipped{
+
+.card-flipped {
     background-color: #40d674;
 }
-.card-incorrect{
+
+.card-incorrect {
     background-color: red;
 }
-.fa-flipped{
+
+.fa-flipped {
     display: inline-block;
-}
-.win{
-    border: 3px solid #25c4ff;
 }
