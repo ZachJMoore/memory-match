@@ -116,4 +116,5 @@ h1{
     border: 5px solid white;
     border-radius: 15px;
     flex-direction: column;
+    box-shadow: 10px 10px 20px lightgrey;
 }

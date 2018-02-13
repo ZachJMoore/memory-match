@@ -20,7 +20,7 @@ const content = {
     modalHidden: "victory flex-container",
     modalShown: "victory flex-container content-visible"
 };
-const icons = ["code", "linux", "space-shuttle", "ambulance", "envira", "balance-scale", "paper-plane", "anchor", "code"];
+const icons = ["", "linux", "eye", "flag", "envira", "cut", "key", "anchor", "code"];
 let selectionCounter = 1;
 let movesMadeCounter = -1;
 let matchProgress = 0;
@@ -127,12 +127,14 @@ const cardDefaultClasses = " card flex-container ";
 
 function selectCard(event){
     if (event.target.nodeName === "DIV" && selectionCounter === 1) {
-        selectionCounter++;
         selectionOne = event.target
         selectionOneClasses = event.target.firstChild.className;
-        selectionOne.firstChild.className = selectionOneClasses + " fa-flipped";
-        selectionOne.className = cardDefaultClasses + " card-flipped";
-        console.log(`clicked on div with child class contents of ${selectionOne.firstChild.className} as your first selection`);
+        if (selectionOneClasses.length < 25 ){
+            selectionCounter++;
+            selectionOne.firstChild.className = selectionOneClasses + " fa-flipped";
+            selectionOne.className = cardDefaultClasses + " card-flipped";
+            console.log(`clicked on div with child class contents of ${selectionOne.firstChild.className} as your first selection`);
+         }
     } else if (event.target.nodeName === "DIV" && selectionCounter === 2 && event.target.id !== selectionOne.id) {
         selectionCounter++;
         selectionTwo = event.target;
