@@ -34,9 +34,9 @@ reset.addEventListener("click", function () {
 gameCanvas.addEventListener("click", function (event) {
     if (event.target.nodeName === "H2") {
         resetGame();
-    } else if (event.target.nodeName === "DIV" || "I"){
+    } else if (event.target.nodeName === "DIV" || "I") {
         selectCard(event);
-    } 
+    }
 });
 document.querySelector("#restart").addEventListener("click", function () {
     resetGame();
@@ -92,7 +92,7 @@ function resetGame() {
     matchProgress = 0;
     updateScore();
     let starFragment = document.createDocumentFragment();
-    for (let i = 1; i <= 3; i++){
+    for (let i = 1; i <= 3; i++) {
         let newStar = document.createElement("i");
         newStar.className = "fa fa-star"
         newStar.id = `star${i}`;
@@ -102,7 +102,7 @@ function resetGame() {
     starsContainer.appendChild(starFragment);
     //reset end stars
     let starEndFragment = document.createDocumentFragment();
-    for (let i = 4; i <= 6; i++){
+    for (let i = 4; i <= 6; i++) {
         let newStar = document.createElement("i");
         newStar.className = "fa fa-star"
         newStar.id = `star${i}`;
@@ -120,21 +120,21 @@ let selectionOneClasses;
 let selectionTwoClasses;
 const cardDefaultClasses = " card flex-container ";
 
-function selectCard(event){
+function selectCard(event) {
     if (event.target.nodeName === "DIV" && selectionCounter === 1) {
         selectionOne = event.target
         selectionOneClasses = event.target.firstChild.className;
-        if (selectionOneClasses.length < 25 ){
+        if (selectionOneClasses.length < 25) {
             selectionCounter++;
             selectionOne.firstChild.className = selectionOneClasses + " fa-flipped";
             selectionOne.className = cardDefaultClasses + " card-flipped";
             console.log(`clicked on div with child class contents of ${selectionOne.firstChild.className} as your first selection`);
-         }
+        }
     } else if (event.target.nodeName === "DIV" && selectionCounter === 2 && event.target.id !== selectionOne.id) {
         selectionCounter++;
         selectionTwo = event.target;
         selectionTwoClasses = event.target.firstChild.className;
-        if (selectionOneClasses === selectionTwoClasses){
+        if (selectionOneClasses === selectionTwoClasses) {
             console.log("you made a match");
             matchProgress++
             console.log(matchProgress);
@@ -146,7 +146,7 @@ function selectCard(event){
             selectionTwo.firstChild.className = selectionTwoClasses + " fa-flipped";
             selectionOne.className = cardDefaultClasses + " card-flipped card-incorrect";
             selectionTwo.className = cardDefaultClasses + " card-flipped card-incorrect";
-            setTimeout(function(){
+            setTimeout(function () {
                 selectionOne.firstChild.className = selectionOneClasses;
                 selectionOne.className = cardDefaultClasses;
                 selectionTwo.firstChild.className = selectionTwoClasses;
@@ -161,25 +161,25 @@ function selectCard(event){
 //    event.target = event.target.parentElement;
 //}
 
-function updateScore(){
+function updateScore() {
     movesMadeCounter += 1;
     movesMade.textContent = movesMadeCounter;
     movesMadeEnd.textContent = movesMadeCounter;
-    if (movesMadeCounter === 13){
+    if (movesMadeCounter === 13) {
         let star1 = document.querySelector("#star1");
         let star4 = document.querySelector("#star4");
         console.log("if statement")
         star1.parentElement.removeChild(star1);
         star4.parentElement.removeChild(star4);
     }
-    if (movesMadeCounter === 15){
+    if (movesMadeCounter === 15) {
         let star2 = document.querySelector("#star2");
         let star5 = document.querySelector("#star5");
         console.log("if statement")
         star2.parentElement.removeChild(star2);
         star5.parentElement.removeChild(star5);
     }
-    if (movesMadeCounter === 19){
+    if (movesMadeCounter === 19) {
         let star3 = document.querySelector("#star3");
         let star6 = document.querySelector("#star6");
         console.log("if statement")
@@ -187,11 +187,12 @@ function updateScore(){
         star6.parentElement.removeChild(star6);
     }
 }
-function checkForWin(){
-    if (matchProgress === 8){
+
+function checkForWin() {
+    if (matchProgress === 8) {
         headText.textContent = "Congrats!";
         endTime = performance.now();
-        setTimeout(function(){
+        setTimeout(function () {
             timeTaken.textContent = Math.round(((endTime - startTime) / 1000))
             gameContainer.className = content.gameHidden;
             victoryModal.className = content.modalShown;
