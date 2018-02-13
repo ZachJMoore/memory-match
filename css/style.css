@@ -24,7 +24,6 @@ body{
     margin: 0;
     padding: 0;
     background: url(../img/patterns/geometry.png);
-    flex-direction: column;
 }
 header{
     flex-direction: column;
@@ -42,6 +41,7 @@ h1{
 .stars{
     justify-content: flex-start;
     width: 45px;
+    height: 15px;
     padding: 5px;
     border: 2px solid black;
     border-radius: 15px;
@@ -68,17 +68,32 @@ h1{
     background: linear-gradient(120deg, #8df4dc 26.3%, #00e2ff 100%);
     flex-wrap: wrap;
     justify-content: space-around;
+    box-shadow: 10px 10px 20px lightgrey;
+}
+#startGame{
+    font-size: 35px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 10px 10px 20px lightgrey;
+}
+#startGame:hover{
+    color: #4bb0b9;
+    cursor: pointer;
+    border: 2px solid #4bb0b9;
 }
 .card{
     margin: 3px;
     border-radius: 15px;
     border: 3px solid white;
-    background-color: #40d674;
+    background-color: #353b37;
     width: 22%;
     height: 22%;
 }
-#cardContent{
-    font-size: 55px;
+.fa-custom{
+    display: none;
+    font-size: 40px;
     color: white;
 }
 

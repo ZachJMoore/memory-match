@@ -18,83 +18,44 @@
 <!--Internal Links-->
         
     <!--css-->
-        <link rel="stylesheet" href="css/style.css">
-        
+        <link rel="stylesheet" href="css/style.css">   
+    <!--Javascript class changes-->
+        <link rel="stylesheet" href="css/action.css">
     </head>
     <body>
-        <header class="header flex-container">
-            <h1>Memory Match!</h1>
-            <section class="info flex-container">
-                <section class="stars flex-container" id="stars">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+        <div class="game-container" id="gameContainer">
+            <header class="header flex-container">
+                <h1>Memory Match!</h1>
+                <section class="info flex-container">
+                    <section class="stars flex-container" id="stars">
+                        <i class="fa fa-star" id="star1"></i>
+                        <i class="fa fa-star" id="star2"></i>
+                        <i class="fa fa-star" id="star3"></i>
+                    </section>
+                    <section class="turns">
+                        <h3>Moves Made: <span id="movesMade">0</span></h3>
+
+                    </section>
+                    <i class="fa fa-undo reset" id="reset"></i>
                 </section>
-                <section class="turns">
-                    <h3>Moves Made: <span id="movesMade">0</span></h3>
-                    
+
+            </header>
+            <main class="main flex-container">
+                <section class="game flex-container" id="gameCanvas">
+                    <h2 id="startGame">Start Game</h2>
                 </section>
-                <i class="fa fa-undo reset" id="reset"></i>
-            </section>
-            
-        </header>
-        <main class="main flex-container">
-            <div class="game flex-container" id="gameCanvas">
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-                <div class="card flex-container" id="card">
-                    <i class="fa fa-gear" id="cardContent"></i>
-                </div>
-            </div>
-            <h3 id="testWin">Test win</h3>
-        </main>
+                <h3 id="testWin">Test win</h3>
+            </main>
+        </div>
         <div class="victory flex-container" id="victory">
             <h2>You Won!</h2>
             <section class="stats flex-container">
                 <h2>stats</h2>
+                <section class="stars flex-container" id="stars-end">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </section>
                 <h3>Time taken: <span id="timeTaken">1:00</span></h3>
                 <h3>Moves Made: <span id="movesMade">15</span></h3>
             </section>
