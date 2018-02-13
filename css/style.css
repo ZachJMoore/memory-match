@@ -92,7 +92,7 @@ h1{
     height: 22%;
 }
 .fa-custom{
-    display: none;
+/*    display: none;*/
     font-size: 40px;
     color: white;
 }
@@ -110,9 +110,10 @@ h1{
     flex-direction: column;
 }
 .stats{
-    background-color: white;
+    background: linear-gradient(120deg, #8df4dc 26.3%, #00e2ff 100%);
+    color: white;
     padding: 15px;
-    border: 2px solid black;
+    border: 5px solid white;
     border-radius: 15px;
     flex-direction: column;
 }

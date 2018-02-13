@@ -8,12 +8,12 @@ const victoryModal = document.querySelector("#victory");
 const gameCanvas = document.querySelector("#gameCanvas");
 const startGame = document.querySelector("#startGame");
 const reset = document.querySelector("#reset");
-const movesMade = document.querySelector("#movesMade")
+const movesMade = document.querySelector("#movesMade");
+const movesMadeEnd = document.querySelector("#movesMadeEnd");
 const headText = document.querySelector("h1");
 const starsContainer = document.querySelector("#stars");
-let star1 = document.querySelector("#star1");
-let star2 = document.querySelector("#star2");
-let star3 = document.querySelector("#star3");
+const starsContainerEnd = document.querySelector("#starsEnd")
+const timeTaken = document.querySelector("#timeTaken");
 const content = {
     gameHidden: "game-container content-hidden",
     gameShown: "game-container",
@@ -22,17 +22,18 @@ const content = {
 };
 const icons = ["code", "linux", "space-shuttle", "ambulance", "envira", "balance-scale", "paper-plane", "anchor", "code"];
 let selectionCounter = 1;
-let movesMadeCounter = 0;
+let movesMadeCounter = -1;
 let matchProgress = 0;
+let endTime;
 //eventlisteners
 
 reset.addEventListener("click", function () {
-    makeMatches();
+    resetGame();
 });
 
 gameCanvas.addEventListener("click", function (event) {
     if (event.target.nodeName === "H2") {
-        makeMatches();
+        resetGame();
     } else if (event.target.nodeName === "DIV" || "I"){
         selectCard(event);
     } 
@@ -43,7 +44,7 @@ document.querySelector("#testWin").addEventListener("click", function () {
     console.log("Game was hidden. Modal was shown.");
 });
 document.querySelector("#restart").addEventListener("click", function () {
-    makeMatches();
+    resetGame();
     gameContainer.className = content.gameShown;
     victoryModal.className = content.modalHidden;
     console.log("Game was shown. Modal was hidden.");
@@ -51,8 +52,8 @@ document.querySelector("#restart").addEventListener("click", function () {
 
 //Functions
 
-function makeMatches() {
-    console.log("makeMatches function was called");
+function resetGame() {
+    console.log("resetGame function was called");
     let fragment = document.createDocumentFragment();
     for (let e = 1; e <= 2; e++) {
         console.log(e);
@@ -93,8 +94,29 @@ function makeMatches() {
         gameCanvas.insertBefore(card, card2);
     }
     movesMadeCounter = -1;
+    matchProgress = 0;
     updateScore();
-    console.log("makeMatches function completed");
+    let starFragment = document.createDocumentFragment();
+    for (let i = 1; i <= 3; i++){
+        let newStar = document.createElement("i");
+        newStar.className = "fa fa-star"
+        newStar.id = `star${i}`;
+        starFragment.appendChild(newStar);
+    }
+    starsContainer.innerHTML = "";
+    starsContainer.appendChild(starFragment);
+    //reset end stars
+    let starEndFragment = document.createDocumentFragment();
+    for (let i = 4; i <= 6; i++){
+        let newStar = document.createElement("i");
+        newStar.className = "fa fa-star"
+        newStar.id = `star${i}`;
+        starEndFragment.appendChild(newStar);
+    }
+    starsContainerEnd.innerHTML = "";
+    starsContainerEnd.appendChild(starEndFragment);
+    console.log("resetGame function completed");
+    startTime = performance.now();
 };
 
 let selectionOne;
@@ -145,24 +167,35 @@ function selectCard(event){
 function updateScore(){
     movesMadeCounter += 1;
     movesMade.textContent = movesMadeCounter;
-    if (movesMadeCounter === 12){
+    movesMadeEnd.textContent = movesMadeCounter;
+    if (movesMadeCounter === 13){
+        let star1 = document.querySelector("#star1");
+        let star4 = document.querySelector("#star4");
         console.log("if statement")
         star1.parentElement.removeChild(star1);
+        star4.parentElement.removeChild(star4);
     }
     if (movesMadeCounter === 15){
+        let star2 = document.querySelector("#star2");
+        let star5 = document.querySelector("#star5");
         console.log("if statement")
         star2.parentElement.removeChild(star2);
+        star5.parentElement.removeChild(star5);
     }
-    if (movesMadeCounter === 18){
+    if (movesMadeCounter === 19){
+        let star3 = document.querySelector("#star3");
+        let star6 = document.querySelector("#star6");
         console.log("if statement")
         star3.parentElement.removeChild(star3);
+        star6.parentElement.removeChild(star6);
     }
 }
 function checkForWin(){
     if (matchProgress === 8){
-        let cards = document.querySelectorAll(".card")
         headText.textContent = "Congrats!";
+        endTime = performance.now();
         setTimeout(function(){
+            timeTaken.textContent = Math.round(((endTime - startTime) / 1000))
             gameContainer.className = content.gameHidden;
             victoryModal.className = content.modalShown;
             console.log("Game was hidden. Modal was shown.");
