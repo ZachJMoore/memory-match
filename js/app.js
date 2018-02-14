@@ -178,20 +178,20 @@ function updateScore() {
     movesMadeCounter += 1;
     movesMade.textContent = movesMadeCounter;
     movesMadeEnd.textContent = movesMadeCounter;
-    //if they have made 13 guesses, remove a star, if they get to 15, remove a star, etc.
-    if (movesMadeCounter === 13) {
+    //if they have made 14 guesses, remove a star, if they get to 16, remove a star, etc.
+    if (movesMadeCounter === 14) {
         let star1 = document.querySelector("#star1");
         let star4 = document.querySelector("#star4");
         star1.parentElement.removeChild(star1);
         star4.parentElement.removeChild(star4);
     }
-    if (movesMadeCounter === 15) {
+    if (movesMadeCounter === 16) {
         let star2 = document.querySelector("#star2");
         let star5 = document.querySelector("#star5");
         star2.parentElement.removeChild(star2);
         star5.parentElement.removeChild(star5);
     }
-    if (movesMadeCounter === 19) {
+    if (movesMadeCounter === 20) {
         let star3 = document.querySelector("#star3");
         let star6 = document.querySelector("#star6");
         star3.parentElement.removeChild(star3);
