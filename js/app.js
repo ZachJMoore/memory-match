@@ -191,12 +191,6 @@ function updateScore() {
         star2.parentElement.removeChild(star2);
         star5.parentElement.removeChild(star5);
     }
-    if (movesMadeCounter === 20) {
-        let star3 = document.querySelector("#star3");
-        let star6 = document.querySelector("#star6");
-        star3.parentElement.removeChild(star3);
-        star6.parentElement.removeChild(star6);
-    }
 }
 
 function checkForWin() {
