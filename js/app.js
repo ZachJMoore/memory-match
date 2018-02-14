@@ -122,11 +122,11 @@ function resetGame() {
     startTime = performance.now();
 };
 
-let selectionOne;
-let selectionTwo;
-let selectionOneClasses;
-let selectionTwoClasses;
-const cardDefaultClasses = " card flex-container ";
+let selectionOne; //represents the first div that was selected
+let selectionTwo; //represents the Second one selected
+let selectionOneClasses; //this gives the classes of the child of selectionOne, which is the icon contained inside of the card
+let selectionTwoClasses; //this one does the same thing except for the second selection
+const cardDefaultClasses = " card flex-container "; //these are the default classes for the div which I can use to effectively reset the card backgrounds
 
 function selectCard(event) {
     //this checks to make sure the player is not clicking on the card container (gameCanvas), then check to see if this is this first selection
