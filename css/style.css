@@ -45,7 +45,7 @@ h1 {
 .info {
     flex-direction: row;
     justify-content: space-between;
-    width: 20%;
+    width: 30%;
     min-width: 300px;
 }
 

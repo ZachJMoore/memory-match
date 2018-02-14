@@ -11,6 +11,7 @@ const headText = document.querySelector("h1");
 const starsContainer = document.querySelector("#stars");
 const starsContainerEnd = document.querySelector("#starsEnd");
 const timeTaken = document.querySelector("#timeTaken");
+const timer = document.querySelector("#timer");
 const content = {
     gameHidden: "game-container content-hidden",
     gameShown: "game-container",
@@ -22,11 +23,14 @@ let selectionCounter = 1;
 let movesMadeCounter = -1;
 let matchProgress = 0;
 let endTime;
+let timerIndex = 0;
+let timerOn = false;
 
 //this resets the match when pressing the little undo icon
 reset.addEventListener("click", function () {
     resetGame();
 });
+
 //this listens for clicks either on the start button or if the game has already started and the player is selecting a card.
 gameCanvas.addEventListener("click", function (event) {
     if (event.target.nodeName === "H2") {
@@ -35,6 +39,7 @@ gameCanvas.addEventListener("click", function (event) {
         selectCard(event);
     };
 });
+
 //this restarts the game if the end restart button is pressed as well as unhides the main area and then hides the modal.
 document.querySelector("#restart").addEventListener("click", function () {
     resetGame();
@@ -108,6 +113,9 @@ function resetGame() {
         newStar.id = `star${i}`;
         starEndFragment.appendChild(newStar);
     };
+    //resets and starts timer on line #220
+    timerIndex = 0;
+    timerOn = true;
     starsContainerEnd.innerHTML = "";
     starsContainerEnd.appendChild(starEndFragment);
     //once all this ran becasue a player has either pressed the start button, reset, or restart, their start time begins.
@@ -196,6 +204,7 @@ function checkForWin() {
     if (matchProgress === 8) {
         headText.textContent = "Congrats!";
         endTime = performance.now();
+        timerOn = false;
         setTimeout(function () {
             //then it waits for one second so they can see they won, then calculate the time taken, round up, and set it.
             timeTaken.textContent = Math.round(((endTime - startTime) / 1000))
@@ -206,3 +215,13 @@ function checkForWin() {
         }, 1000);
     };
 };
+
+//This keeps the time up to date
+setInterval(function () {
+    if (timerOn === true) {
+        timer.textContent = timerIndex;
+        timerIndex++;
+        console.log(`${timerIndex} seconds have gone by`);
+    };
+}, 1000);
+//to stop interval: clearInterval(timer);
